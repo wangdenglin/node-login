@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style type="text/css">
+    a{margin-left: 20px; text-decoration: none;}
+    a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+  <div style="padding-top: 100px">我的主页</div>
+  <h1>用户名: <%- user.name%></h1><a href="/logout">退出 </a>
+  </body>
+</html>

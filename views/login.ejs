@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style type="text/css">
+    a{margin-left: 20px; text-decoration: none;}
+    a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+        <form style="width: 400px; margin:0 auto; padding-top:100px;" role="form" method="post" onsubmit="return false">
+          <div class="form-group">
+            <input type="text" class="form-control"  id="username" placeholder="用户名" >
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="密码">
+          </div>
+           <div id='tip' style="position: absolute; "><%-message%></div>
+          <button  id='submitBtn' style="margin-top:40px;" class="btn btn-primary btn-lg btn-block">登录</button>
+          <a href='/register' style="float: right; margin-top:40px; margin-right:0px;">注册</a>
+    </form>
+    </div>
+    <script type="text/javascript">
+ $(function(){ 
+        $("#submitBtn").click(function(){ 
+          var username = $("#username").val();
+          var password = $("#password").val();
+          if(username==''||password=='')
+          {
+                  $('#tip').html("不能为空").css('color','red')
+          }
+          else
+          {
+              
+            var data = {"name":username,"Mypassword":password};
+            $.ajax({ 
+                url: '/login',
+                type: 'post',
+                data: data,
+                success: function(data,status){ 
+                    if(status == 'success'){ 
+                        location.href = 'home';
+                    }
+                },
+                error: function(data,err){ 
+                        location.href = 'login';
+                }
+            }); 
+         }   
+        })
+     });
+
+</script>
+    </body>
+    </html>
+
+ 
